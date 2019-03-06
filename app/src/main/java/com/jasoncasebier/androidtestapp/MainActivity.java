@@ -1,15 +1,15 @@
 package com.jasoncasebier.androidtestapp;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,16 +18,16 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_info:
-                    mTextMessage.setText(R.string.title_info);
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Information</font>"));
                     return true;
                 case R.id.navigation_location:
-                    mTextMessage.setText(R.string.title_test1);
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 1</font>"));
                     return true;
                 case R.id.navigation_video:
-                    mTextMessage.setText(R.string.title_test2);
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 2</font>"));
                     return true;
                 case R.id.navigation_web:
-                    mTextMessage.setText(R.string.title_test3);
+                    getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3</font>"));
                     return true;
             }
             return false;
@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Information</font>"));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
