@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class WebActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -20,18 +20,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent;
             switch (item.getItemId()) {
                 case R.id.navigation_info:
+                    WebActivity.super.onBackPressed();
                     break;
                 case R.id.navigation_location:
+                    finish();
                     intent = new Intent(getApplicationContext(), LocationActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.navigation_video:
+                    finish();
                     intent = new Intent(getApplicationContext(), VideoActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.navigation_web:
-                    intent = new Intent(getApplicationContext(), WebActivity.class);
-                    startActivity(intent);
                     break;
             }
             return false;
@@ -43,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Information</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(3).setChecked(true);
     }
-
 }
