@@ -42,7 +42,7 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 2</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
