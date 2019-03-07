@@ -44,7 +44,7 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 1</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 1: Current Location</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

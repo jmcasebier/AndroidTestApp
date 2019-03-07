@@ -44,7 +44,7 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3: Web Browser</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

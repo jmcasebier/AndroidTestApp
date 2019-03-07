@@ -44,7 +44,7 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 2</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 2: Video Stream</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
