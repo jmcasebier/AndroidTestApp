@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.MapView;
+
 public class LocationActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,6 +45,8 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
+
+        MapView mapView = findViewById(R.id.mapView);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 1: Current Location</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
