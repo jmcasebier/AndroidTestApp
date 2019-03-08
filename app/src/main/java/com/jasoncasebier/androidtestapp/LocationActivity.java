@@ -10,7 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
 
-public class LocationActivity extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,15 +46,29 @@ public class LocationActivity extends AppCompatActivity {
         }
     };
 
+    private GoogleMap nMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 1: Current Location</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().getItem(1).setChecked(true);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        nMap = googleMap;
+
+        LatLng sydney = new LatLng(-34, 151);
+        nMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        nMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
