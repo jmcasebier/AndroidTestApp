@@ -21,11 +21,11 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 
 public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -81,8 +81,14 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         nMap = googleMap;
         enableMyLocation();
+        setLocation();
+    }
 
+    private void setLocation() {
+        UiSettings settings = nMap.getUiSettings();
+        settings.setMyLocationButtonEnabled(false);
         nMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude, longitude)));
+        nMap.moveCamera(CameraUpdateFactory.zoomTo(18.0f));
     }
 
     private void enableMyLocation() {
@@ -108,6 +114,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        Log.i("LOCATION: ", location.toString());
         latitude = location.getLatitude();
         longitude = location.getLongitude();
     }
