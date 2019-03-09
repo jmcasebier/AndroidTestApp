@@ -88,7 +88,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         UiSettings settings = nMap.getUiSettings();
         settings.setMyLocationButtonEnabled(false);
         nMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude, longitude)));
-        nMap.moveCamera(CameraUpdateFactory.zoomTo(18.0f));
+        nMap.moveCamera(CameraUpdateFactory.zoomTo(18.3f));
     }
 
     private void enableMyLocation() {
