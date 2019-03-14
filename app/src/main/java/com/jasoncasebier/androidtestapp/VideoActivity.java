@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -52,18 +51,12 @@ public class VideoActivity extends AppCompatActivity {
         TextView videoTextView = findViewById(R.id.textView8);
         videoTextView.setText(Html.fromHtml("<font color='#9a9a9a'><b>Source: </b>" +
                 "<i>https://www.pixabay.com/</i></font>"));
-        final VideoView videoView = findViewById(R.id.videoView);
+        VideoView videoView = findViewById(R.id.videoView);
         MediaController mediaController = new MediaController(VideoActivity.this);
+        videoView.setVideoURI(Uri.parse("https://player.vimeo.com/external/178513668.hd.mp4?s=303b5872a66b955a7471d23c87940bff2c1e5047&profile_id=174&oauth2_token_id=57447761"));
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
-        videoView.setVideoURI(Uri.parse("https://player.vimeo.com/external/178513668.hd.mp4?s=303b5872a66b955a7471d23c87940bff2c1e5047&profile_id=174&oauth2_token_id=57447761"));
         videoView.requestFocus();
-
-        try {
-            mediaController.show(500);
-        } catch (Exception e) {
-            Log.i("CONTROLLER", e.getMessage());
-        }
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 2: Video Stream</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
