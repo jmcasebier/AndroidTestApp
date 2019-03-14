@@ -9,6 +9,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class WebActivity extends AppCompatActivity {
 
@@ -43,6 +49,29 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+
+        String[] listviewTitles = new String[] {
+                "Read the Expo documentation", "Read the Android documentation",
+                "Austin Peay State University"
+        };
+        int[] listviewImages = new int[] {
+                R.drawable.expo_logo,
+                R.drawable.android_logo,
+                R.drawable.austin_peay
+        };
+        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
+        for (int i = 0; i < 3; i++) {
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("listview_image", Integer.toString(listviewImages[i]));
+            hashMap.put("listview_title", listviewTitles[i]);
+            aList.add(hashMap);
+        }
+        String[] from = {"listview_image", "listview_title"};
+        int[] to = {R.id.listview_image, R.id.listview_text};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity,
+                from, to);
+        ListView listView = findViewById(R.id.listView);
+        listView.setAdapter(simpleAdapter);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3: Web Browser</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
