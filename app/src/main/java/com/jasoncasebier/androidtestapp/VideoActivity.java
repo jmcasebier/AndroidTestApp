@@ -51,12 +51,12 @@ public class VideoActivity extends AppCompatActivity {
 
         TextView videoTextView = findViewById(R.id.textView8);
         videoTextView.setText(Html.fromHtml("<font color='#9a9a9a'><b>Source: </b>" +
-                "<i>https://www.nasa.gov/</i></font>"));
+                "<i>https://www.pixabay.com/</i></font>"));
         final VideoView videoView = findViewById(R.id.videoView);
         MediaController mediaController = new MediaController(VideoActivity.this);
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
-        videoView.setVideoURI(Uri.parse("http://www.jmcasebier.com/Apollo_11_Moonwalk_Montage.mp4"));
+        videoView.setVideoURI(Uri.parse("https://player.vimeo.com/external/178513668.hd.mp4?s=303b5872a66b955a7471d23c87940bff2c1e5047&profile_id=174&oauth2_token_id=57447761"));
         videoView.requestFocus();
 
         try {
