@@ -9,6 +9,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -72,6 +74,22 @@ public class WebActivity extends AppCompatActivity {
                 from, to);
         ListView listView = findViewById(R.id.listView);
         listView.setAdapter(simpleAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String url;
+                Intent intent = new Intent(getApplicationContext(), BrowserActivity.class);
+                if (i == 0) {
+                    url = "http://docs.expo.io/versions/latest/";
+                } else if (i == 1) {
+                    url = "http://developer.android.com/docs/";
+                } else {
+                    url = "http://apsu.edu/";
+                }
+                intent.putExtra("url", url);
+                startActivity(intent);
+            }
+        });
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000'>Test 3: Web Browser</font>"));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
