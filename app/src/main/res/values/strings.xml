@@ -4,5 +4,5 @@
     <string name="title_test1">Test 1</string>
     <string name="title_test2">Test 2</string>
     <string name="title_test3">Test 3</string>
-    <string name="google_android_map_api_key">AIzaSyCJiNHJOh_VgCI4NdM41cybIUrsHXaOXKs</string>
+    <string name="google_android_map_api_key"><API_KEY></string>
 </resources>
